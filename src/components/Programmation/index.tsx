@@ -1,6 +1,9 @@
 import React from 'react'
 import type { Programmation as ProgrammationType } from '../../types'
-import { formatDate } from '../../utils/formatting'
+
+import { PeriodeCell } from './PeriodeCell'
+import { DomainCell } from './DomainCell'
+import { ItemsCell } from './ItemsCell'
 
 export const Programmation = ({ data }: { data: ProgrammationType }) => {
   const customVariables = React.useMemo(
@@ -19,39 +22,20 @@ export const Programmation = ({ data }: { data: ProgrammationType }) => {
       <div className='flex flex-col gap-6 w-full'>
         <div className='flex flex-col'>
           <div className='flex flex-row justify-center'>
-            <div className='p-4' style={{ writingMode: 'sideways-lr' }}>
-              &nbsp;
-            </div>
+            <DomainCell placeholder />
             {data.periodes.map((periode) => (
-              <div
-                key={periode.id}
-                className={`bg-${periode.color} border-4 border-b-0 border-black rounded-t-2xl -mx-0.5 p-2 flex flex-col gap-2 flex-1 truncate max-w-(--column-width)`}
-              >
-                <h2 className='text-sm font-bold truncate' title={periode.name}>
-                  {periode.name}
-                </h2>
-                <p className='text-end text-sm w-full truncate'>
-                  🗓️ {formatDate(periode.startDate)} {'->'}{' '}
-                  {formatDate(periode.endDate)}
-                </p>
-              </div>
+              <PeriodeCell key={periode.id} periode={periode} />
             ))}
           </div>
           {data.matieres[0].domaines.map((domaine) => (
             <div key={domaine.id} className='flex flex-row justify-center'>
-              <div
-                className={`bg-${domaine.color} border-4 border-r-0 border-black rounded-l-2xl -mx-0.5 p-4 flex flex-col gap-2 `}
-                style={{ writingMode: 'sideways-lr' }}
-              >
-                <h2 className='text-sm font-bold text-'>{domaine.name}</h2>
-              </div>
+              <DomainCell domaine={domaine} />
               {data.periodes.map((periode) => (
-                <div
+                <ItemsCell
                   key={periode.id}
-                  className=' border-black border-4 -m-0.5 w-full max-w-(--column-width)'
-                >
-                  <h2 className='text-sm font-bold w-full'>items</h2>
-                </div>
+                  periodeId={periode.id}
+                  items={domaine.items}
+                />
               ))}
             </div>
           ))}
