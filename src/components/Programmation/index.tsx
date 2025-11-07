@@ -33,7 +33,10 @@ export const Programmation = ({ data }: { data: ProgrammationType }) => {
       className='flex flex-col gap-6 w-full items-center'
       style={customVariables}
     >
-      <h1 className='text-2xl font-bold m-4 flex items-center gap-6 flex-wrap justify-center text-center'>
+      <h1
+        className='text-2xl font-bold m-4 flex items-center gap-6 flex-wrap justify-center text-center'
+        data-testid='programmation-title'
+      >
         {data.name}{' '}
         <MatiereSelect
           matieres={data.matieres}

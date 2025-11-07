@@ -5,7 +5,7 @@ export const DomainCell = ({
   domaine,
   placeholder,
   horizontal = false,
-  className,
+  className = '',
 }: {
   placeholder?: boolean
   domaine?: Programmation['matieres'][0]['domaines'][number]

@@ -4,7 +4,7 @@ import type { Programmation } from '../../types'
 export const ItemsCell = ({
   periodeId,
   items,
-  className,
+  className = '',
 }: {
   periodeId: string
   items: Programmation['matieres'][0]['domaines'][number]['items']
