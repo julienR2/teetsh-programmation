@@ -41,7 +41,7 @@ export const Programmation = ({ data }: { data: ProgrammationType }) => {
         />{' '}
       </h1>
 
-      <div className='flex flex-col gap-6 w-full'>
+      <div className='md:flex hidden flex-col gap-6 w-full'>
         <div className='flex flex-col'>
           <div className='flex flex-row justify-center'>
             <DomainCell placeholder />
@@ -61,7 +61,37 @@ export const Programmation = ({ data }: { data: ProgrammationType }) => {
               ))}
             </div>
           ))}
+          2
         </div>
+      </div>
+
+      <div className='md:hidden flex flex-col gap-10 w-full p-2 relative'>
+        {data.periodes.map((periode) => (
+          <div key={periode.id} className='relative bg-white'>
+            <PeriodeCell
+              periode={periode}
+              className='w-full max-w-full mx-0 -my-1 sticky top-0 border-b-4'
+            />
+            {selectedMatiere?.domaines.map((domaine) => (
+              <div
+                key={domaine.id}
+                className='flex flex-col justify-center border-4 border-black p-2 bg-gray-100 -my-1'
+              >
+                <DomainCell
+                  domaine={domaine}
+                  horizontal
+                  className='border-r-4 rounded-r-2xl mx-0'
+                />
+                <ItemsCell
+                  key={domaine.id}
+                  periodeId={periode.id}
+                  items={domaine.items}
+                  className='max-w-full m-0 border-none'
+                />
+              </div>
+            ))}
+          </div>
+        ))}
       </div>
     </div>
   )
