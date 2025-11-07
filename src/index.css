@@ -7,3 +7,7 @@ body,
   width: 100%;
   height: 100vh;
 }
+
+.bg-cream {
+  background-color: rgb(246 244 239 / var(--tw-bg-opacity, 1));
+}

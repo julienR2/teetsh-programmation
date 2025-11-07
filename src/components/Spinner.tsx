@@ -1,6 +1,6 @@
 export const Spinner = ({ className }: { className?: string }) => (
   <svg
-    className={`mr-3 -ml-1 size-6 animate-spin ${className}`}
+    className={`size-4 animate-spin ${className}`}
     xmlns='http://www.w3.org/2000/svg'
     fill='none'
     viewBox='0 0 24 24'
