@@ -1,5 +1,7 @@
 @import 'tailwindcss';
 
+@source inline("{hover:,}bg-{purple,lime,orange,pink,blue,teal}-{200}");
+
 body,
 #root {
   width: 100%;
